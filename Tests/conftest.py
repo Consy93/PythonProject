@@ -4,12 +4,14 @@ from selenium import webdriver
 
 @pytest.fixture
 def setup(browser):
-    if browser.lower == "edge":
+    if browser.lower() == 'chrome':
+        driver = webdriver.Chrome()
+    elif browser.lower() == "edge":
         driver = webdriver.Edge()
-    elif browser.lower == "firefox":
+    elif browser.lower() == "firefox":
         driver = webdriver.Firefox()
     else:
-        driver = webdriver.Chrome()
+        driver = webdriver.Safari()
     return driver
 
 
